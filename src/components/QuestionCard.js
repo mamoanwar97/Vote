@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import { Media, Label, Input } from 'reactstrap'
+import { Media, Label, Input, FormGroup, Form, Button } from 'reactstrap'
 import { connect } from 'react-redux'
+import {handleAnswer} from '../actions/shared'
 
 class QuestionCard extends Component{
   vote = (e, option) => {
     e.preventDefault();
+    console.log( this.props.id, e.target["options"+ this.props.id].value);
+      this.props.dispatch(handleAnswer(this.props.id, e.target["options"+ this.props.id].value))
+
   }
   render(){
     if (!this.props.question) {
@@ -36,19 +40,20 @@ class QuestionCard extends Component{
                   <div>
                     <Label className ={voted_for1? "bg-info p-2": ""}>{op1_text}: { op1_votes *precentage }%</Label>
                     <Label className ={voted_for2? "bg-info p-2": ""}>{op2_text}: { op2_votes * precentage }%</Label>
-                    <div>{op1_votes+op2_votes} persons voted</div>
+                    <div>You and {op1_votes+op2_votes - 1} persons voted</div>
                   </div>
                 )
                 :
                 (
-                  <div>
-                    <div>
-                      <Label className="btn-success p-2" check> <Input type="radio" name={"options"+ this.props.id} />{' '}{op1_text}</Label>
-                    </div>
-                    <div>
-                      <Label className="btn-warning p-2" check> <Input type="radio" name={"options"+ this.props.id}  />{' '}{op2_text}</Label>
-                    </div>
-                  </div>
+                  <Form onSubmit={this.vote}>
+                    <FormGroup>
+                      <Label className="btn-success p-2" check> <Input type="radio" name={"options"+ this.props.id} value="optionOne"/>{' '}{op1_text}</Label>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label className="btn-warning p-2" check> <Input type="radio" name={"options"+ this.props.id}  value="optionTwo"/>{' '}{op2_text}</Label>
+                    </FormGroup>
+                    <Button type="submit" value="submit" color="primary" className='m-auto'>Vote</Button>
+                  </Form>
                 )
               }
            </Media>

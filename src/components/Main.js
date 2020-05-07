@@ -14,10 +14,8 @@ import LoadingBar from 'react-redux-loading'
 class Main extends Component{
 
   componentDidMount(){
-    this.props.dispatch(handleInitialData())
+      this.props.dispatch(handleInitialData())
   }
-
-
 
   render(){
 
@@ -32,7 +30,7 @@ class Main extends Component{
         <LoadingBar />
         <Switch>
               <Route exact path='/home' component={(props)=> this.props.loading === true?  <Loading />:<Dashboard />} />
-              <Route exact path='/add' component={(props)=> this.props.loading === true?  <Loading />:<NewQuestion />}/>
+              <Route exact path='/add' component={({history, loading})=> this.props.loading === true?  <Loading />:<NewQuestion history={history} />}/>
               <Route path='/home/:qid' component={QuestionID}/>
               <Route exact path='/leaderboard' component={(props)=> this.props.loading === true?  <Loading />:<Leaderboard />}/>
               <Redirect to="/home" />
@@ -44,7 +42,8 @@ class Main extends Component{
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   }
 }
 
