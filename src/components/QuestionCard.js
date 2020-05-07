@@ -25,8 +25,8 @@ class QuestionCard extends Component{
     const precentage = 100 / (op2_votes+ op1_votes);
 
     return (
-      <div className="col-12 mb-3">
-         <Media>
+      <div className="container col-8">
+         <Media className="m-5">
            <Media left href="#"  className="col-5">
              <Media object  className="col-12" src={this.props.user['avatarURL']} alt="Avatar image" />
            </Media>
@@ -38,8 +38,8 @@ class QuestionCard extends Component{
                 alreadyVoted?
                 (
                   <div>
-                    <Label className ={voted_for1? "bg-info p-2": ""}>{op1_text}: { op1_votes *precentage }%</Label>
-                    <Label className ={voted_for2? "bg-info p-2": ""}>{op2_text}: { op2_votes * precentage }%</Label>
+                    <div className ={voted_for1? "bg-info p-2 m-3": "m-3"}>{op1_text}: { op1_votes *precentage }%</div>
+                    <div className ={voted_for2? "bg-info p-2 m-3": "m-3"}>{op2_text}: { op2_votes * precentage }%</div>
                     <div>You and {op1_votes+op2_votes - 1} persons voted</div>
                   </div>
                 )

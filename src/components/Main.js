@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import Leaderboard from './Leaderboard'
@@ -21,7 +21,7 @@ class Main extends Component{
   render(){
 
     const QuestionID = ({match, loading}) => {
-          const id = match.params.qid.substr(1);
+          const id = match.params.question_id.substr(1);
           return loading === true?  <Loading />:<QuestionCard id={id} />
     };
 
@@ -35,7 +35,7 @@ class Main extends Component{
               <Switch>
                     <Route exact path='/home' component={(props)=> this.props.loading === true?  <Loading />:<Dashboard />} />
                     <Route exact path='/add' component={({history, loading})=> this.props.loading === true?  <Loading />:<NewQuestion history={history} />}/>
-                    <Route path='/home/:qid' component={QuestionID}/>
+                    <Route path='/question/:question_id' component={QuestionID}/>
                     <Route exact path='/leaderboard' component={(props)=> this.props.loading === true?  <Loading />:<Leaderboard />}/>
                     <Route exact path='/login' component={({history})=> <LoginCard history={history} />}/>
                     <Redirect to="/home" />

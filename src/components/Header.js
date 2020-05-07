@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label } from 'reactstrap'
 import Navigate from './Navbar.js'
 import HeaderBody from './HeaderBody'
 

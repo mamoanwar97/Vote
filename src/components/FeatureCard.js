@@ -43,7 +43,7 @@ class FeatureCard extends Component{
                   </div>
                 )
               }
-              <Link to={`/home/:${this.props.id}`} className='btn-primary btn btn-lg p-2 view-link center'>View poll</Link>
+              <Link to={`/question/:${this.props.id}`} className='btn-primary btn btn-lg p-2 view-link center'>View poll</Link>
            </Media>
          </Media>
       </div>
