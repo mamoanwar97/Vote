@@ -7,7 +7,7 @@ class LeaderCard extends Component{
     e.preventDefault();
   }
   render(){
-    if (!this.props.question) {
+    if (!this.props.user) {
       return <div>No such Card</div>
     }
 
@@ -22,7 +22,7 @@ class LeaderCard extends Component{
            </Media>
            <Media body className="col-7">
              <Media heading>
-               {this.props.question['author']}
+               {this.props.user.id}
              </Media >
              <div>Asked: {questions}</div>
              <div>Answered: {answered}</div>
@@ -34,12 +34,10 @@ class LeaderCard extends Component{
   }
 }
 
-function mapStateToProps ({authedUser, users, questions}, { id }) {
-  const question = questions[id];
-  const user = question? users[question['author']] : null;
+function mapStateToProps ({users}, { id }) {
+  const user = users[id]? users[id] : null;
+  console.log(user);
   return {
-    authedUser,
-    question: question? question : null,
     user
   };
 }

@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import LeaderCard from './LeaderCard'
+import FeatureCard from './FeatureCard'
 
 class Dashboard extends Component {
   render() {
     return (
       <div className="container">
-        <h3 className='center'>Your Timeline</h3>
+        <h3 className='center'>Your Dashboard</h3>
         <div className="row">
           <div className='dashboard-list col-6'>
             <h2>Answered Questions</h2>
             {this.props.answered.map((answer) => (
-                <LeaderCard id={answer.id} key={answer.id}/>
+                <FeatureCard id={answer.id} key={answer.id}/>
             ))}
           </div>
           <div className='dashboard-list col-6'>
             <h2>Unanswered Questions</h2>
             {this.props.unanswered.map((answer) => (
-                <LeaderCard id={answer.id} key={answer.id}/>
+                <FeatureCard id={answer.id} key={answer.id}/>
             ))}
           </div>
         </div>
