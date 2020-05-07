@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, Button, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {setAuthedUser, unsetAuthedUser} from '../actions/auth'
+import { unsetAuthedUser} from '../actions/auth'
+import { Link } from 'react-router-dom'
 
 
 
 class Navigate extends Component {
-
-  login = (e, user = "tylermcginnis") => {
-    this.props.dispatch(setAuthedUser(user));
-  }
 
   logout = () => {
     this.props.dispatch(unsetAuthedUser());
@@ -38,7 +35,7 @@ class Navigate extends Component {
                   (
                   <Nav className="ml-auto" navbar>
                     <NavItem className="p-1 m-1">
-                      <Label>Welcome, {this.props.user}</Label>
+                      <Label>Welcome, {this.props.user['name']}</Label>
                    </NavItem>
                    <NavItem>
                       <Button outline onClick={this.logout}>Logout</Button>
@@ -49,7 +46,7 @@ class Navigate extends Component {
                   (
                   <Nav className="ml-auto" navbar>
                   <NavItem>
-                      <Button outline onClick={this.login}>Login</Button>
+                      <Link to="/login">Login</Link>
                   </NavItem>
                   </Nav>)
                 }
@@ -59,8 +56,8 @@ class Navigate extends Component {
   }
 }
 
-function mapStateToProps ({authedUser}) {
-  const user = authedUser? authedUser : null;
+function mapStateToProps ({authedUser, users}) {
+  const user = authedUser? users[authedUser] : null;
   return {
     user
   };

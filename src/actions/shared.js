@@ -2,7 +2,6 @@ import { getInitialData } from '../utils/api'
 import { _saveQuestionAnswer, _saveQuestion } from '../utils/_DATA'
 import { addUserQuestion, saveUserAnswer, receiveUsers } from './users'
 import { addQuestion, receiveQuestions, saveQuestionAnswer } from './questions'
-import {setAuthedUser} from './auth'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export function handleInitialData() {
