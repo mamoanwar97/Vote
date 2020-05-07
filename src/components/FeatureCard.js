@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Media, Label, Input } from 'reactstrap'
+import { Media } from 'reactstrap'
 import { connect } from 'react-redux'
 
-class QuestionCard extends Component{
+class FeatureCard extends Component{
   vote = (e, option) => {
     e.preventDefault();
   }
@@ -15,10 +15,8 @@ class QuestionCard extends Component{
     const voted_for2 = this.props.question['optionTwo'].votes.includes(this.props.authedUser);
     const alreadyVoted =  voted_for1 || voted_for2;
     const op1_text = this.props.question['optionOne'].text;
-    const op2_text = this.props.question['optionTwo'].text;
     const op1_votes = this.props.question['optionOne'].votes.length;
     const op2_votes = this.props.question['optionTwo'].votes.length;
-    const precentage = 100 / (op2_votes+ op1_votes);
 
     return (
       <div className="col-12 mb-3">
@@ -28,26 +26,19 @@ class QuestionCard extends Component{
            </Media>
            <Media body className="col-7">
              <Media heading>
-               {this.props.question['author']} Asks:
-             </Media>
+               {this.props.question['author']} Asks: <br/> Would you rather?
+             </Media >
               {
                 alreadyVoted?
                 (
                   <div>
-                    <Label className = { voted_for1 && "bg-info p-2"}>{op1_text}: { op1_votes *precentage }%</Label>
-                    <Label className = { voted_for2 && "bg-info p-2"}>{op2_text}: { op2_votes * precentage }%</Label>
-                    <div>{op1_votes+op2_votes} persons voted</div>
+                    <div>You and {op1_votes+op2_votes} persons voted</div>
                   </div>
                 )
                 :
                 (
                   <div>
-                    <div>
-                      <Label className="btn-success p-2" check> <Input type="radio" name={"options"+ this.props.id} />{' '}{op1_text}</Label>
-                    </div>
-                    <div>
-                      <Label className="btn-warning p-2" check> <Input type="radio" name={"options"+ this.props.id}  />{' '}{op2_text}</Label>
-                    </div>
+                    <div>.. {op1_text} ..</div>
                   </div>
                 )
               }
@@ -68,4 +59,4 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionCard)
+export default connect(mapStateToProps)(FeatureCard)

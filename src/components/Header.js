@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap'
 import Navigate from './Navbar.js'
-import QuestionCard from './QuestionCard'
 import HeaderBody from './HeaderBody'
-import Dashboard from './Dashboard.js'
 
 
 
@@ -66,7 +64,6 @@ class Header extends Component {
                       </Form>
                   </ModalBody>
               </Modal>
-              <QuestionCard />
             </div>
         );
     }

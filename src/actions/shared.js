@@ -2,13 +2,18 @@ import { getInitialData } from '../utils/api'
 import { _saveQuestionAnswer, _saveQuestion } from '../utils/_DATA'
 import { addUserQuestion, saveUserAnswer, receiveUsers } from './users'
 import { addQuestion, receiveQuestions, saveQuestionAnswer } from './questions'
+import {setAuthedUser} from './auth'
+
+const AUTH_ID = 'sarahedo';
 
 export function handleInitialData() {
     return (dispatch) => {
         return getInitialData()
             .then(({ users, questions})=> {
                 dispatch(receiveUsers(users));
-                dispatch(receiveQuestions(questions))
+                dispatch(receiveQuestions(questions));
+                dispatch(setAuthedUser(AUTH_ID))
+
         })
     }
 }
