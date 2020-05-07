@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Media } from 'reactstrap'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class FeatureCard extends Component{
   vote = (e, option) => {
@@ -42,6 +43,7 @@ class FeatureCard extends Component{
                   </div>
                 )
               }
+              <Link to={`/home/:${this.props.id}`} className='btn-primary btn btn-lg p-2 view-link center'>View poll</Link>
            </Media>
          </Media>
       </div>
