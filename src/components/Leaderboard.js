@@ -5,10 +5,10 @@ import LeaderCard from './LeaderCard'
 class Dashboard extends Component {
   render() {
     return (
-      <div className="container">
-        <h3 className='center'>Your Leaderboard</h3>
+      <div className='container ans_unans'>
         <div className="row">
-          <div className='dashboard-list col-7'>
+          <div className='dashboard-list col-7 m-auto'>
+            <h3 className='m-3'>Your Leaderboard</h3>
             {this.props.users.map((user) => (
                 <LeaderCard id={user.id} key={user.id}/>
             ))}

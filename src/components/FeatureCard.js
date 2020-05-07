@@ -20,7 +20,7 @@ class FeatureCard extends Component{
     const op2_votes = this.props.question['optionTwo'].votes.length;
 
     return (
-      <div className="col-12 mb-3">
+      <div className="col-6 container">
          <Media>
            <Media left href="#"  className="col-5">
              <Media object  className="col-12" src={this.props.user['avatarURL']} alt="Avatar image" />

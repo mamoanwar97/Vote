@@ -19,3 +19,11 @@
 .view-link{
   margin: 4px auto;
 }
+.ans_unans{
+  margin: 20px auto;
+}
+.tab-content{
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  border-top: 0;
+}

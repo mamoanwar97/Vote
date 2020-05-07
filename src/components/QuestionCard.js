@@ -34,8 +34,8 @@ class QuestionCard extends Component{
                 alreadyVoted?
                 (
                   <div>
-                    <Label className = { voted_for1 && "bg-info p-2"}>{op1_text}: { op1_votes *precentage }%</Label>
-                    <Label className = { voted_for2 && "bg-info p-2"}>{op2_text}: { op2_votes * precentage }%</Label>
+                    <Label className ={voted_for1? "bg-info p-2": ""}>{op1_text}: { op1_votes *precentage }%</Label>
+                    <Label className ={voted_for2? "bg-info p-2": ""}>{op2_text}: { op2_votes * precentage }%</Label>
                     <div>{op1_votes+op2_votes} persons voted</div>
                   </div>
                 )
