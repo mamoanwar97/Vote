@@ -22,7 +22,7 @@ const Dashboard = (props) => {
             className={classnames({ active: activeTab === '1' })}
             onClick={() => { toggle('1'); }}
           >
-            Answered
+            UnAnswered
           </NavLink>
         </NavItem>
         <NavItem>
@@ -30,7 +30,7 @@ const Dashboard = (props) => {
             className={classnames({ active: activeTab === '2' })}
             onClick={() => { toggle('2'); }}
           >
-            UnAnswered
+          Answered
           </NavLink>
         </NavItem>
       </Nav>
@@ -38,7 +38,7 @@ const Dashboard = (props) => {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-              {props.answered.map((answer) => (
+              {props.unanswered.map((answer) => (
                   <FeatureCard id={answer.id} key={answer.id}/>
               ))}
             </Col>
@@ -47,7 +47,7 @@ const Dashboard = (props) => {
         <TabPane tabId="2">
           <Row>
             <Col sm="12">
-              {props.unanswered.map((answer) => (
+              {props.answered.map((answer) => (
                   <FeatureCard id={answer.id} key={answer.id}/>
               ))}
             </Col>

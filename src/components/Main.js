@@ -10,6 +10,7 @@ import LoginCard from './LoginCard'
 import Loading from './Loading.js'
 import Header from './Header'
 import LoadingBar from 'react-redux-loading'
+import NotFound from "./NotFound"
 
 
 class Main extends Component{
@@ -38,14 +39,11 @@ class Main extends Component{
                     <Route path='/question/:question_id' component={QuestionID}/>
                     <Route exact path='/leaderboard' component={(props)=> this.props.loading === true?  <Loading />:<Leaderboard />}/>
                     <Route exact path='/login' component={({history})=> <LoginCard history={history} />}/>
-                    <Redirect to="/home" />
+                    <Route component={NotFound} />
               </Switch>
             ):
             (
-              <Switch>
-                    <Route exact path='/login' component={({history})=> <LoginCard history={history} />}/>
-                    <Redirect to="/login" />
-              </Switch>
+              <Route  component={({history, location})=> <LoginCard history={history} location={location}/>}/>
             )
 
           }

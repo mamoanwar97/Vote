@@ -36,7 +36,6 @@ class LeaderCard extends Component{
 
 function mapStateToProps ({users}, { id }) {
   const user = users[id]? users[id] : null;
-  console.log(user);
   return {
     user
   };

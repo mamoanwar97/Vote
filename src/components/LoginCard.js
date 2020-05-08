@@ -9,8 +9,7 @@ class LoginCard extends Component{
   handleSubmit= (e)=>{
     e.preventDefault();
     this.props.dispatch(setAuthedUser(e.target.select.value));
-    this.props.history.push('/');
-
+    this.props.history.push(this.props.location.pathname);
   }
 
   render(){
